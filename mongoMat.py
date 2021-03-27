@@ -3,6 +3,8 @@ import scipy.io as sio
 import os
 import numpy as np
 import configparser
+import logging
+logging.basicConfig(level=logging.WARN)
 
 def readProperties(filename, key, subkey):
     config = configparser.RawConfigParser()
@@ -33,7 +35,7 @@ def writeInMongo():
         y_line = y[index];
         row = {"y": y_line.tolist(), "x": X_line.tolist()}
         col.insert_one(row)
-        print(index)
+        logging.debug("writeInMongo - " + str(index))
 
 def readFromMongo():
     mongourl = readProperties("application.properties", "mongo", "mongo-url")
@@ -49,11 +51,9 @@ def readFromMongo():
         X_new.append(np.fromiter(row['x'], float))
         y_new.append(np.fromiter(row['y'], int))
         index += 1
-        print(index)
+        logging.debug("readFromMongo - " + str(index))
     
     return np.asarray(X_new), np.asarray(y_new)
 
-
-writeInMongo()
-
-X, y = readFromMongo()
+#writeInMongo()
+#X, y = readFromMongo()
