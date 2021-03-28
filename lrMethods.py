@@ -1,5 +1,5 @@
 import numpy as np
-from sigmoid import sigmoid
+import sigmoid
 from scipy import optimize
 
 def lrCostFunction(theta, X, y, lambda_t):
@@ -7,7 +7,7 @@ def lrCostFunction(theta, X, y, lambda_t):
 
   theta = np.reshape(theta, (theta.size, 1))
 
-  h = sigmoid( np.matmul(X, theta) )
+  h = sigmoid.sigmoid( np.matmul(X, theta) )
   
   J = 1 / m * ( np.matmul(np.transpose(np.log(h)), -y) - np.matmul(np.transpose(np.log(1-h)), (1-y)) ) \
        + lambda_t / (2 * m)  * np.matmul(np.transpose(theta[1:]), theta[1:])

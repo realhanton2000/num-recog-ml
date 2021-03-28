@@ -21,8 +21,7 @@ def predict(x):
     return p
 
 def draw(x):
-    num_row, num_col = x.shape
-    side = math.floor(math.sqrt(num_col))
+    side = math.floor(math.sqrt(x.size))
     arr = np.reshape(x, (side, side))
     plt.imshow(arr, cmap='gray', vmin=0, vmax=1)
     plt.show()
