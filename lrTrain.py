@@ -27,5 +27,3 @@ def runjob():
     coltheta = db["num-image-theta"]
     row = {"accuracy": accuracy_, "thetas": all_theta.tolist(), "timestamp": datetime.datetime.utcnow()}
     coltheta.insert_one(row)
-
-runjob()

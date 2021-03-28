@@ -37,7 +37,9 @@ def transData(X):
         X_line_max = np.amax(abs(X_line))
         X_line = X_line / X_line_max
         #scale X into 0:1
-        X_line = X_line / 2 + 0.5
+        X_line_max = np.amax(X_line)
+        X_line_min = np.amin(X_line)
+        X_line = (X_line - X_line_min) / (X_line_max - X_line_min)
         #transpose matrix
         X_mat = np.reshape(X_line, (side, side))
         X_mat = X_mat.transpose()
@@ -86,8 +88,3 @@ def readFromMongo(index=-1):
             X_new.append(np.fromiter(row['x'], float))
             y_new.append(np.fromiter(row['y'], int))
         return np.asarray(X_new), np.asarray(y_new)
-
-def ex3data1():
-    X, y = readFromMat()
-    X = transData(X)
-    writeInMongo(X, y)

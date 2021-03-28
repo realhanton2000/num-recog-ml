@@ -26,9 +26,3 @@ def draw(x):
     arr = np.reshape(x, (side, side))
     plt.imshow(arr, cmap='gray', vmin=0, vmax=1)
     plt.show()
-
-def test():
-    x, y = mmat.readFromMongo(1199)
-    print(predict(x))
-    print(y)
-    draw(x)
