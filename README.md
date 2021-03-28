@@ -8,6 +8,6 @@ matfile=XXX.mat
 mongo-url=mongodb+srv://XXX:XXX@cluster.mongodb.net/XX?XXXX
 ```
 
-You can pre-populate X/y data into mongodb from matlib file./
-Calculate theta, write into mongodb./
+You can pre-populate X/y data into mongodb from matlib file.\
+Calculate theta, write into mongodb.\
 Compute prediction based on theta.
